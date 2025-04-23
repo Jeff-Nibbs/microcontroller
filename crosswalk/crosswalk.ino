@@ -2,7 +2,6 @@
 #define YELLOW 5
 #define RED 6
 #define lightDelay 7000 // time between light changes
-#define BUTTON 9
 
 int button = 0;
 int crosswalk;
