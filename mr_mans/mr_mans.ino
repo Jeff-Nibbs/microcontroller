@@ -89,20 +89,20 @@ void resetMainFace(int lx, int rx, int ty, int bx, int by) {
 
     } else if (lx < left_eye_x) {
       if (ty > eye_y) {
-        reset_left_eye_x = reset_left_eye_x + third_x;
-        reset_right_eye_x = reset_right_eye_x + third_x;
-        reset_mouth_x = reset_mouth_x + third_x;
+        reset_left_eye_x = reset_left_eye_x - third_x;
+        reset_right_eye_x = reset_right_eye_x - third_x;
+        reset_mouth_x = reset_mouth_x - third_x;
         reset_eye_y = reset_eye_y - third_y;
         reset_mouth_y = reset_mouth_y - third_y;
 
         makeFace(reset_left_eye_x, reset_right_eye_x, reset_eye_y, eye_width, eye_height, eye_radius, reset_mouth_x, reset_mouth_y, mouth_width, mouth_height, mouth_radius);
 
       } else if (ty < eye_y) {
-        reset_left_eye_x = reset_left_eye_x + third_x;
-        reset_right_eye_x = reset_right_eye_x + third_x;
-        reset_mouth_x = reset_mouth_x + third_x;
-        reset_eye_y = reset_eye_y + third_y;
-        reset_mouth_y = reset_mouth_y + third_y;
+        reset_left_eye_x = reset_left_eye_x - third_x;
+        reset_right_eye_x = reset_right_eye_x - third_x;
+        reset_mouth_x = reset_mouth_x - third_x;
+        reset_eye_y = reset_eye_y - third_y;
+        reset_mouth_y = reset_mouth_y - third_y;
 
         makeFace(reset_left_eye_x, reset_right_eye_x, reset_eye_y, eye_width, eye_height, eye_radius, reset_mouth_x, reset_mouth_y, mouth_width, mouth_height, mouth_radius);
         
@@ -295,5 +295,8 @@ void loop() {
   int rand_time = random(1, 4);
   move();
   makeMainFace();
+  if (rand_time == 3) {
+    blink(left_eye_x, right_eye_x, eye_y, eye_width, eye_height, eye_radius, mouth_x, mouth_y, mouth_width, mouth_height, mouth_radius);
+  }
   delay(rand_time * 1000);
 }
