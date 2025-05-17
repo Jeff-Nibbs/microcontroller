@@ -2785,7 +2785,7 @@ void angry(int nu, int x, int y) {
 void main_blink(int nu, int x, int y) {
 	u8g2.drawXBMP(x, y, 128, 64, epd_bitmap_blink_allArray[nu]);
 }
-
+// sets face animation forward
 void face_forward(void (*face)(int nu, int x, int y)) {
 	for (int frame = 0; frame < 10; frame++) {
 		clear_IM();
@@ -2793,33 +2793,36 @@ void face_forward(void (*face)(int nu, int x, int y)) {
 		send_IM();
 	}
 }
-
+// sets face animation back
 void face_back(void (*face)(int nu, int x, int y)) {
 	for (int frame = 9; frame >= 0; frame--) {
 		clear_IM();
 		face(frame, 0, 0);
 		send_IM();
-		delay(50);
 	}
 }
 
 void test_loop() {
 	face_forward(happy);
-	delay(2000);
+	delay(1000);
 	face_back(happy);
-	delay(2000);
+	delay(1000);
 	face_forward(main_blink);
-	delay(2000);
 	face_back(main_blink);
-	delay(2000);
+	delay(1000);
 	face_forward(sad);
 	delay(2000);
 	face_back(sad);
-	delay(2000);
+	delay(1000);
+	face_forward(main_blink);
+	face_back(main_blink);
+	delay(1000);
 	face_forward(angry);
-	delay(2000);
+	delay(5000);
 	face_back(angry);
-	delay(2000);
+	face_forward(main_blink);
+	face_back(main_blink);
+	delay(1000);
 }
 
 void setup(void) {
