@@ -2804,25 +2804,25 @@ void face_back(void (*face)(int nu, int x, int y)) {
 
 void test_loop() {
 	face_forward(happy);
-	delay(1000);
+	delay(10000);
 	face_back(happy);
 	delay(1000);
 	face_forward(main_blink);
 	face_back(main_blink);
 	delay(1000);
 	face_forward(sad);
-	delay(2000);
+	delay(10000);
 	face_back(sad);
 	delay(1000);
 	face_forward(main_blink);
 	face_back(main_blink);
 	delay(1000);
 	face_forward(angry);
-	delay(5000);
+	delay(10000);
 	face_back(angry);
 	face_forward(main_blink);
 	face_back(main_blink);
-	delay(1000);
+	delay(10000);
 }
 
 void setup(void) {
