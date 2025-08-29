@@ -48,11 +48,6 @@ void loop() {
   
   float T = (tC * 9.0 / 5.0) + 32.0;
 
-  float HI = -42.379 + 2.04901523 * T + 10.14333127 * RH
-            - 0.22475541 * T * RH - 0.00683783 * T * T
-            - 0.05481717 * RH * RH + 0.00122874 * T * T * RH
-            + 0.00085282 * T * RH * RH - 0.00000199 * T * T * RH * RH;
-
   display.clearDisplay();
 
   // Title line
@@ -76,8 +71,20 @@ void loop() {
   // Heat Index
   display.setTextSize(1);
   display.setCursor(0, 50);
-  display.print(F("Heat Index: "));
-  display.print(HI, 1); display.print((char)247); display.print(F("F"));
+  if (RH < 30) {
+    display.print(F("Air is too dry"));
+  }
+  if (RH > 60) {
+    display.print(F("Air is too humid! Risk of mold"));
+  }
+  if (T < 68) {
+    display.print(F("Too cold for comfort"));
+  }
+  if (T > 75) {
+    display.print(F("Too warm indoors"));
+  } else {
+    display.print(F("Things feel great"));
+  }
 
   display.display();
 }
